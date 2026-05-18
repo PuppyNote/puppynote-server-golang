@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/PuppyNote/puppynote-server-golang/config"
+	"github.com/PuppyNote/puppynote-server-golang/internal/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -33,5 +34,33 @@ func Connect() {
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetMaxOpenConns(100)
 
+	if err = autoMigrate(); err != nil {
+		log.Fatalf("AutoMigrate 실패: %v", err)
+	}
+
 	log.Println("DB 연결 성공")
+}
+
+func autoMigrate() error {
+	return DB.AutoMigrate(
+		&model.User{},
+		&model.RefreshToken{},
+		&model.Push{},
+		&model.Pet{},
+		&model.FamilyMember{},
+		&model.Walk{},
+		&model.WalkPhoto{},
+		&model.PetWalkAlarm{},
+		&model.PetAlarmDay{},
+		&model.PetItem{},
+		&model.PetItemPurchase{},
+		&model.Post{},
+		&model.PostHashtag{},
+		&model.PostImage{},
+		&model.PostLike{},
+		&model.FoodChatHistory{},
+		&model.AlertSetting{},
+		&model.AlertHistory{},
+		&model.PetTip{},
+	)
 }
