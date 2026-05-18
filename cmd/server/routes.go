@@ -5,8 +5,10 @@ import (
 	"github.com/PuppyNote/puppynote-server-golang/internal/auth"
 	"github.com/PuppyNote/puppynote-server-golang/internal/community"
 	"github.com/PuppyNote/puppynote-server-golang/internal/food"
+	"github.com/PuppyNote/puppynote-server-golang/internal/home"
 	"github.com/PuppyNote/puppynote-server-golang/internal/pet"
 	"github.com/PuppyNote/puppynote-server-golang/internal/petitem"
+	"github.com/PuppyNote/puppynote-server-golang/internal/pettip"
 	"github.com/PuppyNote/puppynote-server-golang/internal/storage"
 	"github.com/PuppyNote/puppynote-server-golang/internal/user"
 	"github.com/PuppyNote/puppynote-server-golang/internal/walk"
@@ -65,4 +67,10 @@ func registerRoutes(base *gin.RouterGroup) {
 
 	// Food AI
 	food.NewHandler(database.DB).RegisterRoutes(base)
+
+	// Home
+	home.NewHandler(database.DB).RegisterRoutes(base)
+
+	// PetTip
+	pettip.NewHandler(database.DB).RegisterRoutes(base)
 }
