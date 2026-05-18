@@ -8,11 +8,19 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-const accessTokenDuration = 2 * time.Hour
+const (
+	accessTokenDuration  = 2 * time.Hour
+	refreshTokenDuration = 30 * 24 * time.Hour
+)
 
 type LoginUserInfo struct {
 	UserID int64  `json:"userId"`
 	Email  string `json:"email"`
+}
+
+type TokenPair struct {
+	AccessToken  string
+	RefreshToken string
 }
 
 type Claims struct {
@@ -25,20 +33,30 @@ func Init(secret string) {
 	secretKey = []byte(secret)
 }
 
-func Generate(info LoginUserInfo) (string, error) {
+func GeneratePair(info LoginUserInfo) (*TokenPair, error) {
+	accessToken, err := generate(info, accessTokenDuration)
+	if err != nil {
+		return nil, err
+	}
+	refreshToken, err := generate(info, refreshTokenDuration)
+	if err != nil {
+		return nil, err
+	}
+	return &TokenPair{AccessToken: accessToken, RefreshToken: refreshToken}, nil
+}
+
+func generate(info LoginUserInfo, duration time.Duration) (string, error) {
 	subject, err := json.Marshal(info)
 	if err != nil {
 		return "", err
 	}
-
 	claims := Claims{
 		RegisteredClaims: jwt.RegisteredClaims{
 			Subject:   string(subject),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(accessTokenDuration)),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(duration)),
 		},
 	}
-
 	token := jwt.NewWithClaims(jwt.SigningMethodHS512, claims)
 	return token.SignedString(secretKey)
 }
