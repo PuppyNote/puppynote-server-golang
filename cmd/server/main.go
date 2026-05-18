@@ -14,6 +14,7 @@ import (
 	"github.com/PuppyNote/puppynote-server-golang/pkg/redis"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
 	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -29,6 +30,9 @@ func main() {
 	r.Use(gin.Recovery())
 	r.Use(middleware.CORS())
 	r.Use(middleware.ErrorHandler())
+	r.Use(middleware.PrometheusMiddleware())
+
+	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	base := r.Group(config.AppConfig.Server.ContextPath)
 	{

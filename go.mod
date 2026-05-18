@@ -10,6 +10,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.53.0
 	github.com/elastic/go-elasticsearch/v8 v8.12.1
 	github.com/gin-gonic/gin v1.9.1
+	github.com/prometheus/client_golang v1.19.0
 	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/google/uuid v1.6.0
 	github.com/redis/go-redis/v9 v9.5.1
