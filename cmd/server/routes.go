@@ -4,6 +4,7 @@ import (
 	"puppynote/internal/alert"
 	"puppynote/internal/auth"
 	"puppynote/internal/community"
+	"puppynote/internal/family"
 	"puppynote/internal/food"
 	"puppynote/internal/home"
 	"puppynote/internal/pet"
@@ -30,10 +31,15 @@ func registerRoutes(base *gin.RouterGroup) {
 	userSvc := user.NewService(userRepo)
 	user.NewHandler(userSvc).RegisterRoutes(base)
 
-	// Pet & FamilyMember
+	// Pet
 	petRepo := pet.NewRepository(database.DB)
 	petSvc := pet.NewService(petRepo)
 	pet.NewHandler(petSvc).RegisterRoutes(base)
+
+	// FamilyMember
+	familyRepo := family.NewRepository(database.DB)
+	familySvc := family.NewService(familyRepo)
+	family.NewHandler(familySvc).RegisterRoutes(base)
 
 	// Walk
 	walkRepo := walk.NewRepository(database.DB)
