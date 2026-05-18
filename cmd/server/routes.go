@@ -1,13 +1,17 @@
 package main
 
 import (
+	"github.com/PuppyNote/puppynote-server-golang/internal/alert"
 	"github.com/PuppyNote/puppynote-server-golang/internal/auth"
 	"github.com/PuppyNote/puppynote-server-golang/internal/community"
+	"github.com/PuppyNote/puppynote-server-golang/internal/food"
 	"github.com/PuppyNote/puppynote-server-golang/internal/pet"
 	"github.com/PuppyNote/puppynote-server-golang/internal/petitem"
+	"github.com/PuppyNote/puppynote-server-golang/internal/storage"
 	"github.com/PuppyNote/puppynote-server-golang/internal/user"
 	"github.com/PuppyNote/puppynote-server-golang/internal/walk"
 	"github.com/PuppyNote/puppynote-server-golang/internal/walkalarm"
+	"github.com/PuppyNote/puppynote-server-golang/internal/weather"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/database"
 	redispkg "github.com/PuppyNote/puppynote-server-golang/pkg/redis"
 	"github.com/gin-gonic/gin"
@@ -48,4 +52,17 @@ func registerRoutes(base *gin.RouterGroup) {
 	communityRepo := community.NewRepository(database.DB)
 	communitySvc := community.NewService(communityRepo, redispkg.Client)
 	community.NewHandler(communitySvc).RegisterRoutes(base)
+
+	// Storage (S3)
+	storage.NewHandler().RegisterRoutes(base)
+
+	// Alert Setting & History
+	alertRepo := alert.NewRepository(database.DB)
+	alert.NewHandler(alertRepo).RegisterRoutes(base)
+
+	// Weather
+	weather.NewHandler().RegisterRoutes(base)
+
+	// Food AI
+	food.NewHandler(database.DB).RegisterRoutes(base)
 }
