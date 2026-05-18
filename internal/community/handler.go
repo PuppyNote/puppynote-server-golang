@@ -25,6 +25,7 @@ func (h *Handler) RegisterRoutes(rg *gin.RouterGroup) {
 		g.GET("/posts/:postId", h.getPost)
 		g.PATCH("/posts/:postId", h.updatePost)
 		g.DELETE("/posts/:postId", h.deletePost)
+		g.GET("/posts/search", h.searchPosts)
 		g.GET("/posts/hashtags", h.searchHashtags)
 		g.POST("/posts/:postId/like", h.toggleLike)
 	}
@@ -117,6 +118,24 @@ func (h *Handler) deletePost(c *gin.Context) {
 		return
 	}
 	response.OK(c, nil)
+}
+
+func (h *Handler) searchPosts(c *gin.Context) {
+	user := middleware.GetLoginUser(c)
+	keyword := c.Query("keyword")
+	if keyword == "" {
+		response.BadRequest(c, "keyword가 필요합니다.")
+		return
+	}
+	page, _ := strconv.Atoi(c.DefaultQuery("page", "0"))
+	size, _ := strconv.Atoi(c.DefaultQuery("size", "20"))
+
+	res, err := h.svc.SearchPosts(keyword, user.UserID, page, size)
+	if err != nil {
+		_ = c.Error(err)
+		return
+	}
+	response.OK(c, res)
 }
 
 func (h *Handler) searchHashtags(c *gin.Context) {

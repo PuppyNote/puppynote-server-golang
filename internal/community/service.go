@@ -35,6 +35,7 @@ func (s *Service) CreatePost(userID int64, req PostCreateRequest) (int64, error)
 	if err := s.repo.SavePost(p); err != nil {
 		return 0, err
 	}
+	go indexPost(p.ID, p.Content, req.Hashtags)
 	return p.ID, nil
 }
 
@@ -94,7 +95,11 @@ func (s *Service) UpdatePost(postID, userID int64, req PostUpdateRequest) error 
 		p.Images = append(p.Images, model.PostImage{PostID: postID, ImageKey: key, OrderNum: nextOrder})
 	}
 
-	return s.repo.UpdatePost(p)
+	if err = s.repo.UpdatePost(p); err != nil {
+		return err
+	}
+	go indexPost(p.ID, p.Content, req.Hashtags)
+	return nil
 }
 
 func (s *Service) DeletePost(postID, userID int64) error {
@@ -105,11 +110,28 @@ func (s *Service) DeletePost(postID, userID int64) error {
 	if p.UserID != userID {
 		return pnerrors.NewWithCode(403, "게시글 삭제 권한이 없습니다.")
 	}
-	return s.repo.SoftDeletePost(postID)
+	if err = s.repo.SoftDeletePost(postID); err != nil {
+		return err
+	}
+	go deletePostFromES(postID)
+	return nil
 }
 
 func (s *Service) SearchHashtags(keyword string) ([]string, error) {
 	return s.repo.SearchHashtags(keyword)
+}
+
+func (s *Service) SearchPosts(keyword string, currentUserID int64, page, size int) (*PostListResponse, error) {
+	ids, total, err := searchPosts(keyword, page*size, size)
+	if err != nil || len(ids) == 0 {
+		return &PostListResponse{Posts: []PostResponse{}, CurrentPage: page, TotalPages: 0, TotalCount: 0}, err
+	}
+
+	posts, err := s.repo.FindPostsByIDs(ids)
+	if err != nil {
+		return nil, err
+	}
+	return s.buildListResponse(posts, total, currentUserID, page, size), nil
 }
 
 // Like Services

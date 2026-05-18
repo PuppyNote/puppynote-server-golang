@@ -83,6 +83,14 @@ func (r *Repository) MaxOrderNum(postID int64) int {
 	return maxOrder
 }
 
+func (r *Repository) FindPostsByIDs(ids []int64) ([]model.Post, error) {
+	var posts []model.Post
+	err := r.db.Preload("User").Preload("Images").Preload("Hashtags").
+		Where("id IN ? AND deleted_at IS NULL", ids).
+		Find(&posts).Error
+	return posts, err
+}
+
 func (r *Repository) SearchHashtags(keyword string) ([]string, error) {
 	var hashtags []string
 	err := r.db.Model(&model.PostHashtag{}).

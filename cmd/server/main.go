@@ -8,6 +8,7 @@ import (
 	"github.com/PuppyNote/puppynote-server-golang/config"
 	"github.com/PuppyNote/puppynote-server-golang/internal/batch"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/database"
+	espkg "github.com/PuppyNote/puppynote-server-golang/pkg/elasticsearch"
 	pnjwt "github.com/PuppyNote/puppynote-server-golang/pkg/jwt"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/redis"
@@ -21,6 +22,7 @@ func main() {
 
 	database.Connect()
 	redis.Connect()
+	espkg.Connect()
 
 	r := gin.New()
 	r.Use(gin.Logger())
