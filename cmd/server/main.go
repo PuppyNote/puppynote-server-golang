@@ -7,6 +7,7 @@ import (
 
 	"github.com/PuppyNote/puppynote-server-golang/config"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/database"
+	pnjwt "github.com/PuppyNote/puppynote-server-golang/pkg/jwt"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/redis"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
@@ -15,6 +16,7 @@ import (
 
 func main() {
 	config.Load()
+	pnjwt.Init(config.AppConfig.JWT.SecretKey)
 
 	database.Connect()
 	redis.Connect()
@@ -23,6 +25,7 @@ func main() {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.CORS())
+	r.Use(middleware.ErrorHandler())
 
 	base := r.Group(config.AppConfig.Server.ContextPath)
 	{
