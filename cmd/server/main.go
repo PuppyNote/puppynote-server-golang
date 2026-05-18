@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/PuppyNote/puppynote-server-golang/config"
+	"github.com/PuppyNote/puppynote-server-golang/internal/batch"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/database"
 	pnjwt "github.com/PuppyNote/puppynote-server-golang/pkg/jwt"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
@@ -35,6 +36,9 @@ func main() {
 	}
 
 	registerRoutes(base)
+
+	c := batch.StartScheduler(database.DB)
+	defer c.Stop()
 
 	addr := fmt.Sprintf(":%s", config.AppConfig.Server.Port)
 	log.Printf("PuppyNote 서버 시작: http://localhost%s%s", addr, config.AppConfig.Server.ContextPath)
