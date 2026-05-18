@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
+	"puppynote/internal/model"
+	pnerrors "puppynote/pkg/errors"
 )
 
 func getOAuthEmail(snsType model.SnsType, token string) (string, error) {

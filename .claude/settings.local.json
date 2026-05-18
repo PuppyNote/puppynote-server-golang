@@ -1,7 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(Get-ChildItem *)"
+      "Bash(Get-ChildItem *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\tkdrl\\\\Desktop\\\\PProject\\\\puppynote-server-golang\" -Recurse | Where-Object {$_.PSIsContainer -eq $true})",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(go version *)",
+      "PowerShell(go version *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\tkdrl\\\\Desktop\\\\PProject\\\\puppynote-server\" -Recurse -Directory | Where-Object { $_.Name -eq 'pets' -or $_.Name -eq 'familyMembers' } | Select-Object -ExpandProperty FullName)",
+      "Bash(Select-Object Name)",
+      "Bash(Find \"C:\\\\Users\\\\tkdrl\\\\Desktop\\\\PProject\\\\puppynote-server\\\\src\\\\test\\\\java\\\\com\\\\puppynoteserver\\\\community\" -name \"*.java\" -type f)",
+      "Bash(Sort-Object)",
+      "Bash(git push *)",
+      "Bash(xargs sed -i 's|github.com/PuppyNote/puppynote-server-golang|puppynote|g')",
+      "Bash(sed -i 's|module github.com/PuppyNote/puppynote-server-golang|module puppynote|g' go.mod)"
     ]
   }
 }

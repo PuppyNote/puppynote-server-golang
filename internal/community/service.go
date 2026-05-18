@@ -4,8 +4,8 @@ import (
 	"context"
 	"math"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
+	"puppynote/internal/model"
+	pnerrors "puppynote/pkg/errors"
 	goredis "github.com/redis/go-redis/v9"
 )
 

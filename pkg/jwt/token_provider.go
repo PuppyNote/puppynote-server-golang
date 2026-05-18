@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
+	pnerrors "puppynote/pkg/errors"
 	"github.com/golang-jwt/jwt/v5"
 )
 

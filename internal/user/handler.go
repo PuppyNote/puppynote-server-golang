@@ -1,8 +1,8 @@
 package user
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	"puppynote/pkg/middleware"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 )
 

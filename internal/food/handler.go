@@ -9,11 +9,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/PuppyNote/puppynote-server-golang/config"
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	"puppynote/config"
+	"puppynote/internal/model"
+	pnerrors "puppynote/pkg/errors"
+	"puppynote/pkg/middleware"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )

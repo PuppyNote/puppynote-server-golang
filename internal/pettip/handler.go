@@ -1,9 +1,9 @@
 package pettip
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	"puppynote/internal/model"
+	"puppynote/pkg/middleware"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )

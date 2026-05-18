@@ -1,7 +1,7 @@
 package alert
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/internal/model"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )

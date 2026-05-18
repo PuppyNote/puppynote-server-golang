@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/PuppyNote/puppynote-server-golang/config"
+	"puppynote/config"
 	goredis "github.com/redis/go-redis/v9"
 )
 

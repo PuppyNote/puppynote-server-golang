@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 )
 

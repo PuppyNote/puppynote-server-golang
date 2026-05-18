@@ -3,8 +3,8 @@ package middleware
 import (
 	"strings"
 
-	pnjwt "github.com/PuppyNote/puppynote-server-golang/pkg/jwt"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	pnjwt "puppynote/pkg/jwt"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 )
 

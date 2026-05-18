@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/PuppyNote/puppynote-server-golang/config"
+	"puppynote/config"
 	"gopkg.in/gomail.v2"
 )
 

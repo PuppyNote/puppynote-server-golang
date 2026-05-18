@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	espkg "github.com/PuppyNote/puppynote-server-golang/pkg/elasticsearch"
+	espkg "puppynote/pkg/elasticsearch"
 	"github.com/elastic/go-elasticsearch/v8/esapi"
 )
 

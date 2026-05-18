@@ -1,6 +1,6 @@
 package auth
 
-import "github.com/PuppyNote/puppynote-server-golang/internal/model"
+import "puppynote/internal/model"
 
 type LoginRequest struct {
 	Email    string `json:"email" binding:"required,email"`

@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/internal/model"
 )
 
 const expoAPI = "https://exp.host/--/api/v2/push/send"

@@ -3,7 +3,7 @@ package elasticsearch
 import (
 	"log"
 
-	"github.com/PuppyNote/puppynote-server-golang/config"
+	"puppynote/config"
 	"github.com/elastic/go-elasticsearch/v8"
 )
 

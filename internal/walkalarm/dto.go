@@ -1,7 +1,7 @@
 package walkalarm
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/internal/model"
 )
 
 type WalkAlarmCreateRequest struct {

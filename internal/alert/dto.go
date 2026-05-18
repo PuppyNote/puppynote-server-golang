@@ -3,7 +3,7 @@ package alert
 import (
 	"time"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/internal/model"
 )
 
 type AlertSettingResponse struct {

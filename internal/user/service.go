@@ -1,9 +1,9 @@
 package user
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	pnemail "github.com/PuppyNote/puppynote-server-golang/pkg/email"
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
+	"puppynote/internal/model"
+	pnemail "puppynote/pkg/email"
+	pnerrors "puppynote/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
 )
 

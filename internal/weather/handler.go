@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"time"
 
-	redispkg "github.com/PuppyNote/puppynote-server-golang/pkg/redis"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	redispkg "puppynote/pkg/redis"
+	"puppynote/pkg/middleware"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 )
 

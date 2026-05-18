@@ -4,8 +4,8 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/push"
+	"puppynote/internal/model"
+	"puppynote/pkg/push"
 	"gorm.io/gorm"
 )
 

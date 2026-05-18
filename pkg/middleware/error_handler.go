@@ -3,8 +3,8 @@ package middleware
 import (
 	"net/http"
 
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	pnerrors "puppynote/pkg/errors"
+	"puppynote/pkg/response"
 	"github.com/gin-gonic/gin"
 )
 

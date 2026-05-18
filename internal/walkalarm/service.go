@@ -3,8 +3,8 @@ package walkalarm
 import (
 	"time"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
+	"puppynote/internal/model"
+	pnerrors "puppynote/pkg/errors"
 )
 
 type Service struct {

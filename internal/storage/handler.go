@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/PuppyNote/puppynote-server-golang/config"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/middleware"
-	"github.com/PuppyNote/puppynote-server-golang/pkg/response"
+	"puppynote/config"
+	"puppynote/pkg/middleware"
+	"puppynote/pkg/response"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	awsconfig "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/credentials"

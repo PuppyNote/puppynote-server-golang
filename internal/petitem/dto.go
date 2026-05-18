@@ -3,7 +3,7 @@ package petitem
 import (
 	"time"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/internal/model"
 )
 
 type PetItemCreateRequest struct {

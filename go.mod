@@ -1,4 +1,4 @@
-module github.com/PuppyNote/puppynote-server-golang
+module puppynote
 
 go 1.22
 

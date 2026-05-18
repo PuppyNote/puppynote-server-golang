@@ -1,10 +1,10 @@
 package auth
 
 import (
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
-	pnemail "github.com/PuppyNote/puppynote-server-golang/pkg/email"
-	pnerrors "github.com/PuppyNote/puppynote-server-golang/pkg/errors"
-	pnjwt "github.com/PuppyNote/puppynote-server-golang/pkg/jwt"
+	"puppynote/internal/model"
+	pnemail "puppynote/pkg/email"
+	pnerrors "puppynote/pkg/errors"
+	pnjwt "puppynote/pkg/jwt"
 	"golang.org/x/crypto/bcrypt"
 )
 

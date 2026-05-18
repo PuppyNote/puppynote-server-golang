@@ -3,7 +3,7 @@ package pet
 import (
 	"time"
 
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/internal/model"
 )
 
 // Pet DTOs

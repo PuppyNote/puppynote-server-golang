@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/PuppyNote/puppynote-server-golang/config"
-	"github.com/PuppyNote/puppynote-server-golang/internal/model"
+	"puppynote/config"
+	"puppynote/internal/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
