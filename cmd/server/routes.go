@@ -2,12 +2,14 @@ package main
 
 import (
 	"github.com/PuppyNote/puppynote-server-golang/internal/auth"
+	"github.com/PuppyNote/puppynote-server-golang/internal/community"
 	"github.com/PuppyNote/puppynote-server-golang/internal/pet"
 	"github.com/PuppyNote/puppynote-server-golang/internal/petitem"
 	"github.com/PuppyNote/puppynote-server-golang/internal/user"
 	"github.com/PuppyNote/puppynote-server-golang/internal/walk"
 	"github.com/PuppyNote/puppynote-server-golang/internal/walkalarm"
 	"github.com/PuppyNote/puppynote-server-golang/pkg/database"
+	redispkg "github.com/PuppyNote/puppynote-server-golang/pkg/redis"
 	"github.com/gin-gonic/gin"
 )
 
@@ -41,4 +43,9 @@ func registerRoutes(base *gin.RouterGroup) {
 	petItemRepo := petitem.NewRepository(database.DB)
 	petItemSvc := petitem.NewService(petItemRepo)
 	petitem.NewHandler(petItemSvc).RegisterRoutes(base)
+
+	// Community
+	communityRepo := community.NewRepository(database.DB)
+	communitySvc := community.NewService(communityRepo, redispkg.Client)
+	community.NewHandler(communitySvc).RegisterRoutes(base)
 }
